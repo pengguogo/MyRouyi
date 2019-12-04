@@ -6,6 +6,7 @@ import com.ruoyi.project.system.customer.domain.Customer;
 import com.ruoyi.project.system.customer.service.ICustomerService;
 import com.ruoyi.project.system.product.domain.MgProductInfo;
 import com.ruoyi.project.system.product.service.IMgProductInfoService;
+import com.ruoyi.project.system.supplier.domain.Supplier;
 import com.ruoyi.project.system.supplier.service.ISupplierService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,11 +72,15 @@ public class OrderController extends BaseController
             mgProductInfo.setSku(info.getSku());
             List<MgProductInfo> mgProductInfos = mgProductInfoService.selectMgProductInfoList(mgProductInfo);
             if (mgProductInfos != null && mgProductInfos.size()!=0){
-                info.setCp(mgProductInfos.get(0).getProductName());
+                info.setCp(mgProductInfos.get(0).getProductNameEn());
                 info.setCpId(mgProductInfos.get(0).getId());
                 info.setOe(mgProductInfos.get(0).getOe());
                 info.setSpxh(mgProductInfos.get(0).getSpxh());
             }
+            Customer customer = customerService.selectCustomerById(info.getCustomerId());
+            info.setCustomer(customer.getKhm());
+            Supplier supplier = supplierService.selectSupplierById(info.getGysId());
+            info.setGys(supplier.getGsm());
             orderService.insertOrder(info);
         }
 

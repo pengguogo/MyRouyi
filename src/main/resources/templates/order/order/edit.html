@@ -14,6 +14,12 @@
                     <textarea name="orderno" class="form-control">[[*{orderno}]]</textarea>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">销售时间：</label>
+                <div class="col-sm-8">
+                    <textarea name="xssj" class="form-control">[[*{xssj}]]</textarea>
+                </div>
+            </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label">类型</label>
                 <div class="col-sm-8">
@@ -54,6 +60,37 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="col-sm-3 control-label">产品金额：</label>
+                <div class="col-sm-8">
+                    <textarea name="cpje" class="form-control">[[*{cpje}]]</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">数量：</label>
+                <div class="col-sm-8">
+                    <textarea name="sl" class="form-control">[[*{sl}]]</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">订单总金额：</label>
+                <div class="col-sm-8">
+                    <textarea name="ddzje" class="form-control">[[*{ddzje}]]</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">运费：</label>
+                <div class="col-sm-8">
+                    <textarea name="yf" class="form-control">[[*{yf}]]</textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">计费重：</label>
+                <div class="col-sm-8">
+                    <textarea name="jfz" class="form-control">[[*{jfz}]]</textarea>
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="col-sm-3 control-label">采购价：</label>
                 <div class="col-sm-8">
                     <textarea name="cgj" class="form-control">[[*{cgj}]]</textarea>
@@ -65,36 +102,7 @@
                     <textarea name="gys" class="form-control">[[*{gys}]]</textarea>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">运费：</label>
-                <div class="col-sm-8">
-                    <textarea name="yf" class="form-control">[[*{yf}]]</textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">销售时间：</label>
-                <div class="col-sm-8">
-                    <textarea name="xssj" class="form-control">[[*{xssj}]]</textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">产品金额：</label>
-                <div class="col-sm-8">
-                    <textarea name="cpje" class="form-control">[[*{cpje}]]</textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">订单总金额：</label>
-                <div class="col-sm-8">
-                    <textarea name="ddzje" class="form-control">[[*{ddzje}]]</textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">计费重：</label>
-                <div class="col-sm-8">
-                    <textarea name="jfz" class="form-control">[[*{jfz}]]</textarea>
-                </div>
-            </div>
+
         </form>
     </div>
     <th:block th:include="include :: footer" />

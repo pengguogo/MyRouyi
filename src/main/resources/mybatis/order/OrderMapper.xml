@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="gysId"    column="gys_id"    />
         <result property="orderno"    column="orderno"    />
         <result property="type"    column="type"    />
+
         <result property="customer"    column="customer"    />
         <result property="cp"    column="cp"    />
         <result property="sku"    column="SKU"    />
@@ -21,6 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="yf"    column="yf"    />
         <result property="xssj"    column="xssj"    />
         <result property="cpje"    column="cpje"    />
+        <result property="sl"    column="sl"    />
         <result property="ddzje"    column="ddzje"    />
         <result property="jfz"    column="jfz"    />
         <result property="createTime"    column="create_time"    />
@@ -28,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectOrderVo">
-        select id, customer_id, cp_id, gys_id, orderno, type, customer, cp, SKU, OE, spxh, cgj, gys, yf, xssj, cpje, ddzje, jfz, create_time, update_time from `order`
+        select id, customer_id, cp_id, gys_id, orderno, type, customer, cp, SKU, OE, spxh, cgj, gys, yf, xssj, cpje,sl, ddzje, jfz, create_time, update_time from `order`
     </sql>
 
     <select id="selectOrderList" parameterType="Order" resultMap="OrderResult">
@@ -77,6 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="yf != null  and yf != ''">yf,</if>
             <if test="xssj != null  and xssj != ''">xssj,</if>
             <if test="cpje != null  and cpje != ''">cpje,</if>
+            <if test="sl != null  and sl != ''">sl,</if>
             <if test="ddzje != null  and ddzje != ''">ddzje,</if>
             <if test="jfz != null  and jfz != ''">jfz,</if>
             <if test="createTime != null ">create_time,</if>
@@ -98,6 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="yf != null  and yf != ''">#{yf},</if>
             <if test="xssj != null  and xssj != ''">#{xssj},</if>
             <if test="cpje != null  and cpje != ''">#{cpje},</if>
+            <if test="sl != null  and sl != ''">#{sl},</if>
             <if test="ddzje != null  and ddzje != ''">#{ddzje},</if>
             <if test="jfz != null  and jfz != ''">#{jfz},</if>
             <if test="createTime != null ">#{createTime},</if>
@@ -123,6 +127,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="yf != null  and yf != ''">yf = #{yf},</if>
             <if test="xssj != null  and xssj != ''">xssj = #{xssj},</if>
             <if test="cpje != null  and cpje != ''">cpje = #{cpje},</if>
+            <if test="sl != null  and sl != ''">sl = #{sl},</if>
             <if test="ddzje != null  and ddzje != ''">ddzje = #{ddzje},</if>
             <if test="jfz != null  and jfz != ''">jfz = #{jfz},</if>
             <if test="createTime != null ">create_time = #{createTime},</if>

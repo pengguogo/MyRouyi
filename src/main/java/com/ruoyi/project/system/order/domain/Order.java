@@ -18,15 +18,19 @@ public class Order extends BaseEntity
     /** 主键id */
     private Long id;
 
-    private Long customerId;
+    private String customer;
 
     private Long cpId;
 
-    private Long gysId;
+    private String gys;
 
     /** 订单号 */
     @Excel(name = "订单号")
     private String orderno;
+
+    /** 销售时间 */
+    @Excel(name = "销售时间")
+    private String xssj;
 
     /** 类型*/
     @Excel(name = "类型")
@@ -34,10 +38,10 @@ public class Order extends BaseEntity
 
     /** 客户 */
     @Excel(name = "客户")
-    private String customer;
+    private Long customerId;
 
     /** 产品 */
-    @Excel(name = "产品")
+    @Excel(name = "产品英文名称")
     private String cp;
 
     /** SKU */
@@ -52,33 +56,36 @@ public class Order extends BaseEntity
     @Excel(name = "适配型号")
     private String spxh;
 
+
+    /** 产品金额 */
+    @Excel(name = "产品金额")
+    private String cpje;
+
+    /** 数量 */
+    @Excel(name = "数量")
+    private String sl;
+
+    /** 订单总金额 */
+    @Excel(name = "订单总金额")
+    private String ddzje;
+
+    /** 运费 */
+    @Excel(name = "运费")
+    private String yf;
+
+    /** 计费重 */
+    @Excel(name = "计费重")
+    private String jfz;
+
     /** 采购价 */
     @Excel(name = "采购价")
     private String cgj;
 
     /** 供应商 */
     @Excel(name = "供应商")
-    private String gys;
+    private Long gysId;
 
-    /** 运费 */
-    @Excel(name = "运费")
-    private String yf;
 
-    /** 销售时间 */
-    @Excel(name = "销售时间")
-    private String xssj;
-
-    /** 产品金额 */
-    @Excel(name = "产品金额")
-    private String cpje;
-
-    /** 订单总金额 */
-    @Excel(name = "订单总金额")
-    private String ddzje;
-
-    /** 计费重 */
-    @Excel(name = "计费重")
-    private String jfz;
 
     public void setId(Long id) 
     {
@@ -241,6 +248,14 @@ public class Order extends BaseEntity
     public String getJfz() 
     {
         return jfz;
+    }
+
+    public String getSl() {
+        return sl;
+    }
+
+    public void setSl(String sl) {
+        this.sl = sl;
     }
 
     @Override

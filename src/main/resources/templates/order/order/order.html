@@ -80,6 +80,10 @@
                     field : 'orderno', 
                     title : '订单号'
                 },
+                    {
+                        field : 'xssj',
+                        title : '销售时间'
+                    },
                 {
                     field : 'type', 
                     title : '类型'
@@ -93,7 +97,7 @@
                 },
                 {
                     field : 'cp', 
-                    title : '产品',
+                    title : '产品英文名称',
                     formatter: function(value, row, index) {
                         return '<a href="javascript:void(0)" onclick="detail(\'' + row.cpId + '\')">' + value + '</a>';
                     }
@@ -113,6 +117,28 @@
                     field : 'spxh', 
                     title : '适配型号'
                 },
+                    {
+                        field : 'cpje',
+                        title : '产品金额'
+                    },
+                    {
+                        field : 'sl',
+                        title : '数量'
+                    },
+                    {
+                        field : 'ddzje',
+                        title : '订单总金额'
+                    },
+                    {
+                        field : 'yf',
+                        title : '运费'
+                    },
+
+
+                    {
+                        field : 'jfz',
+                        title : '计费重'
+                    },
                 {
                     field : 'cgj', 
                     title : '采购价'
@@ -124,26 +150,7 @@
                         return '<a href="javascript:void(0)" onclick="supplierDetail(\'' + row.gysId + '\')">' + value + '</a>';
                     }
                 },
-                {
-                    field : 'yf', 
-                    title : '运费'
-                },
-                {
-                    field : 'xssj', 
-                    title : '销售时间'
-                },
-                {
-                    field : 'cpje', 
-                    title : '产品金额'
-                },
-                {
-                    field : 'ddzje', 
-                    title : '订单总金额'
-                },
-                {
-                    field : 'jfz', 
-                    title : '计费重'
-                },
+
                 {
                     title: '操作',
                     align: 'center',
