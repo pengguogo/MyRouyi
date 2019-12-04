@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.system.order.mapper.OrderMapper">
+    
+    <resultMap type="Order" id="OrderResult">
+        <result property="id"    column="id"    />
+        <result property="customerId"    column="customer_id"    />
+        <result property="cpId"    column="cp_id"    />
+        <result property="gysId"    column="gys_id"    />
+        <result property="orderno"    column="orderno"    />
+        <result property="type"    column="type"    />
+        <result property="customer"    column="customer"    />
+        <result property="cp"    column="cp"    />
+        <result property="sku"    column="SKU"    />
+        <result property="oe"    column="OE"    />
+        <result property="spxh"    column="spxh"    />
+        <result property="cgj"    column="cgj"    />
+        <result property="gys"    column="gys"    />
+        <result property="yf"    column="yf"    />
+        <result property="xssj"    column="xssj"    />
+        <result property="cpje"    column="cpje"    />
+        <result property="ddzje"    column="ddzje"    />
+        <result property="jfz"    column="jfz"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectOrderVo">
+        select id, customer_id, cp_id, gys_id, orderno, type, customer, cp, SKU, OE, spxh, cgj, gys, yf, xssj, cpje, ddzje, jfz, create_time, update_time from `order`
+    </sql>
+
+    <select id="selectOrderList" parameterType="Order" resultMap="OrderResult">
+        <include refid="selectOrderVo"/>
+        <where>  
+            <if test="customerId != null "> and customer_id = #{customerId}</if>
+            <if test="cpId != null "> and cp_id = #{cpId}</if>
+            <if test="gysId != null "> and gys_id = #{gysId}</if>
+            <if test="orderno != null  and orderno != ''"> and orderno like concat('%', #{orderno}, '%')</if>
+            <if test="type != null  and type != ''"> and type  = #{type}</if>
+            <if test="customer != null  and customer != ''"> and customer like concat('%', #{customer}, '%')</if>
+            <if test="cp != null  and cp != ''"> and cp like concat('%', #{cp}, '%')</if>
+            <if test="sku != null  and sku != ''"> and SKU like concat('%', #{sku}, '%')</if>
+            <if test="oe != null  and oe != ''"> and OE like concat('%', #{oe}, '%')</if>
+            <if test="spxh != null  and spxh != ''"> and spxh = #{spxh}</if>
+            <if test="cgj != null  and cgj != ''"> and cgj = #{cgj}</if>
+            <if test="gys != null  and gys != ''"> and gys = #{gys}</if>
+            <if test="yf != null  and yf != ''"> and yf = #{yf}</if>
+            <if test="params.beginXssj != null and params.beginXssj != '' and params.endXssj != null and params.endXssj != ''"> and xssj between #{params.beginXssj} and #{params.endXssj}</if>
+            <if test="cpje != null  and cpje != ''"> and cpje = #{cpje}</if>
+            <if test="ddzje != null  and ddzje != ''"> and ddzje = #{ddzje}</if>
+            <if test="jfz != null  and jfz != ''"> and jfz = #{jfz}</if>
+        </where>
+    </select>
+    
+    <select id="selectOrderById" parameterType="Long" resultMap="OrderResult">
+        <include refid="selectOrderVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="id">
+        insert into `order`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="customerId != null ">customer_id,</if>
+            <if test="cpId != null ">cp_id,</if>
+            <if test="gysId != null ">gys_id,</if>
+            <if test="orderno != null  and orderno != ''">orderno,</if>
+            <if test="type != null  and type != ''">type,</if>
+            <if test="customer != null  and customer != ''">customer,</if>
+            <if test="cp != null  and cp != ''">cp,</if>
+            <if test="sku != null  and sku != ''">SKU,</if>
+            <if test="oe != null  and oe != ''">OE,</if>
+            <if test="spxh != null  and spxh != ''">spxh,</if>
+            <if test="cgj != null  and cgj != ''">cgj,</if>
+            <if test="gys != null  and gys != ''">gys,</if>
+            <if test="yf != null  and yf != ''">yf,</if>
+            <if test="xssj != null  and xssj != ''">xssj,</if>
+            <if test="cpje != null  and cpje != ''">cpje,</if>
+            <if test="ddzje != null  and ddzje != ''">ddzje,</if>
+            <if test="jfz != null  and jfz != ''">jfz,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateTime != null ">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="customerId != null ">#{customerId},</if>
+            <if test="cpId != null ">#{cpId},</if>
+            <if test="gysId != null ">#{gysId},</if>
+            <if test="orderno != null  and orderno != ''">#{orderno},</if>
+            <if test="type != null  and type != ''">#{type},</if>
+            <if test="customer != null  and customer != ''">#{customer},</if>
+            <if test="cp != null  and cp != ''">#{cp},</if>
+            <if test="sku != null  and sku != ''">#{sku},</if>
+            <if test="oe != null  and oe != ''">#{oe},</if>
+            <if test="spxh != null  and spxh != ''">#{spxh},</if>
+            <if test="cgj != null  and cgj != ''">#{cgj},</if>
+            <if test="gys != null  and gys != ''">#{gys},</if>
+            <if test="yf != null  and yf != ''">#{yf},</if>
+            <if test="xssj != null  and xssj != ''">#{xssj},</if>
+            <if test="cpje != null  and cpje != ''">#{cpje},</if>
+            <if test="ddzje != null  and ddzje != ''">#{ddzje},</if>
+            <if test="jfz != null  and jfz != ''">#{jfz},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateOrder" parameterType="Order">
+        update `order`
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="customerId != null ">customer_id = #{customerId},</if>
+            <if test="cpId != null ">cp_id = #{cpId},</if>
+            <if test="gysId != null ">gys_id = #{gysId},</if>
+            <if test="orderno != null  and orderno != ''">orderno = #{orderno},</if>
+            <if test="type != null  and type != ''">type = #{type},</if>
+            <if test="customer != null  and customer != ''">customer = #{customer},</if>
+            <if test="cp != null  and cp != ''">cp = #{cp},</if>
+            <if test="sku != null  and sku != ''">SKU = #{sku},</if>
+            <if test="oe != null  and oe != ''">OE = #{oe},</if>
+            <if test="spxh != null  and spxh != ''">spxh = #{spxh},</if>
+            <if test="cgj != null  and cgj != ''">cgj = #{cgj},</if>
+            <if test="gys != null  and gys != ''">gys = #{gys},</if>
+            <if test="yf != null  and yf != ''">yf = #{yf},</if>
+            <if test="xssj != null  and xssj != ''">xssj = #{xssj},</if>
+            <if test="cpje != null  and cpje != ''">cpje = #{cpje},</if>
+            <if test="ddzje != null  and ddzje != ''">ddzje = #{ddzje},</if>
+            <if test="jfz != null  and jfz != ''">jfz = #{jfz},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteOrderById" parameterType="Long">
+        delete from `order` where id = #{id}
+    </delete>
+
+    <delete id="deleteOrderByIds" parameterType="String">
+        delete from `order` where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

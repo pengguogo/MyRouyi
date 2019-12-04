@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('客户信息')" />
+</head>
+
+<body class="gray-bg" style="font: 14px Helvetica Neue, Helvetica, PingFang SC, 微软雅黑, Tahoma, Arial, sans-serif !important;">
+    <input id="Id" name="Id" type="hidden" th:value="${customer.Id}" />
+    <section class="section-content">
+        <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+                <div class="ibox-title ibox-title-gray dashboard-header gray-bg">
+                    <h5>客户信息</h5>
+                </div>
+                <div class="ibox-content">
+
+                    <ul class="list-group list-group-striped">
+                        <li class="list-group-item"><i class="fa fa-user"></i>
+                            <b class="font-noraml">客户名：</b>
+                            <p class="pull-right">[[${customer.khm}]]</p>
+                        </li>
+
+                    </ul>
+                    <ul class="list-group list-group-striped">
+                        <li class="list-group-item"><i class="fa fa-user"></i>
+                            <b class="font-noraml">国家：</b>
+                            <p class="pull-right">[[${customer.gj}]]</p>
+                        </li>
+
+                    </ul>
+                    <ul class="list-group list-group-striped">
+                        <li class="list-group-item"><i class="fa fa-user"></i>
+                            <b class="font-noraml">联系方式：</b>
+                            <p class="pull-right">[[${customer.lxfs}]]</p>
+                        </li>
+
+                    </ul>
+                    <ul class="list-group list-group-striped">
+                        <li class="list-group-item"><i class="fa fa-user"></i>
+                            <b class="font-noraml">客户分类：</b>
+                            <p class="pull-right">[[${customer.khfl}]]</p>
+                        </li>
+
+                    </ul>
+                    <ul class="list-group list-group-striped">
+                        <li class="list-group-item"><i class="fa fa-user"></i>
+                            <b class="font-noraml">客户地址：</b>
+                            <p class="pull-right">[[${customer.khdz}]]</p>
+                        </li>
+
+                    </ul>
+                    <ul class="list-group list-group-striped">
+                        <li class="list-group-item"><i class="fa fa-user"></i>
+                            <b class="font-noraml">感兴趣产品：</b>
+                            <p class="pull-right">[[${customer.gxqcp}]]</p>
+                        </li>
+
+                    </ul>
+
+                    <ul class="list-group list-group-striped">
+                        <li class="list-group-item"><i class="fa fa-user"></i>
+                            <b class="font-noraml">数量：</b>
+                            <p class="pull-right">[[${customer.sl}]]</p>
+                        </li>
+
+                    </ul>
+                    <ul class="list-group list-group-striped">
+                        <li class="list-group-item"><i class="fa fa-user"></i>
+                            <b class="font-noraml">车型：</b>
+                            <p class="pull-right">[[${customer.cx}]]</p>
+                        </li>
+
+                    </ul>
+                    <ul class="list-group list-group-striped">
+                        <li class="list-group-item"><i class="fa fa-user"></i>
+                            <b class="font-noraml">OE号：</b>
+                            <p class="pull-right">[[${customer.oe}]]</p>
+                        </li>
+
+                    </ul>
+                    <ul class="list-group list-group-striped">
+                        <li class="list-group-item"><i class="fa fa-user"></i>
+                            <b class="font-noraml">报价：</b>
+                            <p class="pull-right">[[${customer.bj}]]</p>
+                        </li>
+
+                    </ul>
+                    <ul class="list-group list-group-striped">
+                        <li class="list-group-item"><i class="fa fa-user"></i>
+                            <b class="font-noraml">邮箱：</b>
+                            <p class="pull-right">[[${customer.yx}]]</p>
+                        </li>
+
+                    </ul>
+                    <ul class="list-group list-group-striped">
+                        <li class="list-group-item"><i class="fa fa-user"></i>
+                            <b class="font-noraml">sku：</b>
+                            <p class="pull-right">[[${customer.sku}]]</p>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+	</section>
+
+    <th:block th:include="include :: footer" />
+
+</body>
+</html>

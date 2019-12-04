@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('新增供应商列')" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-supplier-add">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">公司名：</label>
+                <div class="col-sm-8">
+                    <textarea name="gsm" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">主营产品：</label>
+                <div class="col-sm-8">
+                    <textarea name="zycp" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">联系人：</label>
+                <div class="col-sm-8">
+                    <textarea name="lxr" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">联系电话：</label>
+                <div class="col-sm-8">
+                    <textarea name="lxdh" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">网址：</label>
+                <div class="col-sm-8">
+                    <textarea name="wz" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">QQ：</label>
+                <div class="col-sm-8">
+                    <textarea name="qq" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">微信：</label>
+                <div class="col-sm-8">
+                    <textarea name="wx" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">地址：</label>
+                <div class="col-sm-8">
+                    <textarea name="dz" class="form-control"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script type="text/javascript">
+        var prefix = ctx + "supplier/supplier"
+        $("#form-supplier-add").validate({
+            focusCleanup: true
+        });
+
+        function submitHandler() {
+            if ($.validate.form()) {
+                $.operate.save(prefix + "/add", $('#form-supplier-add').serialize());
+            }
+        }
+    </script>
+</body>
+</html>

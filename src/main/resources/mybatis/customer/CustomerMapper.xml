@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.system.customer.mapper.CustomerMapper">
+    
+    <resultMap type="Customer" id="CustomerResult">
+        <result property="id"    column="id"    />
+        <result property="khm"    column="khm"    />
+        <result property="gj"    column="gj"    />
+        <result property="lxfs"    column="lxfs"    />
+        <result property="khfl"    column="khfl"    />
+        <result property="khdz"    column="khdz"    />
+        <result property="gxqcp"    column="gxqcp"    />
+        <result property="sl"    column="sl"    />
+        <result property="cx"    column="cx"    />
+        <result property="oe"    column="oe"    />
+        <result property="bj"    column="bj"    />
+        <result property="yx"    column="yx"    />
+        <result property="sku"    column="sku"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectCustomerVo">
+        select id, khm, gj, lxfs, khfl, khdz, gxqcp, sl, cx, oe, bj, yx, sku, create_time, update_time from customer
+    </sql>
+
+    <select id="selectCustomerList" parameterType="Customer" resultMap="CustomerResult">
+        <include refid="selectCustomerVo"/>
+        <where>  
+            <if test="khm != null  and khm != ''"> and khm like concat('%', #{khm}, '%') </if>
+            <if test="gj != null  and gj != ''"> and gj like concat('%', #{gj}, '%')</if>
+            <if test="lxfs != null  and lxfs != ''"> and lxfs like concat('%', #{lxfs}, '%')</if>
+            <if test="khfl != null  and khfl != ''"> and khfl like concat('%', #{khfl}, '%')</if>
+            <if test="khdz != null  and khdz != ''"> and khdz = #{khdz}</if>
+            <if test="gxqcp != null  and gxqcp != ''"> and gxqcp = #{gxqcp}</if>
+            <if test="sl != null  and sl != ''"> and sl = #{sl}</if>
+            <if test="cx != null  and cx != ''"> and cx = #{cx}</if>
+            <if test="oe != null  and oe != ''"> and oe = #{oe}</if>
+            <if test="bj != null  and bj != ''"> and bj = #{bj}</if>
+            <if test="yx != null  and yx != ''"> and yx = #{yx}</if>
+            <if test="sku != null  and sku != ''"> and sku = #{sku}</if>
+        </where>
+    </select>
+    
+    <select id="selectCustomerById" parameterType="Long" resultMap="CustomerResult">
+        <include refid="selectCustomerVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertCustomer" parameterType="Customer" useGeneratedKeys="true" keyProperty="id">
+        insert into customer
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="khm != null  and khm != ''">khm,</if>
+            <if test="gj != null  and gj != ''">gj,</if>
+            <if test="lxfs != null  and lxfs != ''">lxfs,</if>
+            <if test="khfl != null  and khfl != ''">khfl,</if>
+            <if test="khdz != null  and khdz != ''">khdz,</if>
+            <if test="gxqcp != null  and gxqcp != ''">gxqcp,</if>
+            <if test="sl != null  and sl != ''">sl,</if>
+            <if test="cx != null  and cx != ''">cx,</if>
+            <if test="oe != null  and oe != ''">oe,</if>
+            <if test="bj != null  and bj != ''">bj,</if>
+            <if test="yx != null  and yx != ''">yx,</if>
+            <if test="sku != null  and sku != ''">sku,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateTime != null ">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="khm != null  and khm != ''">#{khm},</if>
+            <if test="gj != null  and gj != ''">#{gj},</if>
+            <if test="lxfs != null  and lxfs != ''">#{lxfs},</if>
+            <if test="khfl != null  and khfl != ''">#{khfl},</if>
+            <if test="khdz != null  and khdz != ''">#{khdz},</if>
+            <if test="gxqcp != null  and gxqcp != ''">#{gxqcp},</if>
+            <if test="sl != null  and sl != ''">#{sl},</if>
+            <if test="cx != null  and cx != ''">#{cx},</if>
+            <if test="oe != null  and oe != ''">#{oe},</if>
+            <if test="bj != null  and bj != ''">#{bj},</if>
+            <if test="yx != null  and yx != ''">#{yx},</if>
+            <if test="sku != null  and sku != ''">#{sku},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCustomer" parameterType="Customer">
+        update customer
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="khm != null  and khm != ''">khm = #{khm},</if>
+            <if test="gj != null  and gj != ''">gj = #{gj},</if>
+            <if test="lxfs != null  and lxfs != ''">lxfs = #{lxfs},</if>
+            <if test="khfl != null  and khfl != ''">khfl = #{khfl},</if>
+            <if test="khdz != null  and khdz != ''">khdz = #{khdz},</if>
+            <if test="gxqcp != null  and gxqcp != ''">gxqcp = #{gxqcp},</if>
+            <if test="sl != null  and sl != ''">sl = #{sl},</if>
+            <if test="cx != null  and cx != ''">cx = #{cx},</if>
+            <if test="oe != null  and oe != ''">oe = #{oe},</if>
+            <if test="bj != null  and bj != ''">bj = #{bj},</if>
+            <if test="yx != null  and yx != ''">yx = #{yx},</if>
+            <if test="sku != null  and sku != ''">sku = #{sku},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCustomerById" parameterType="Long">
+        delete from customer where id = #{id}
+    </delete>
+
+    <delete id="deleteCustomerByIds" parameterType="String">
+        delete from customer where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
