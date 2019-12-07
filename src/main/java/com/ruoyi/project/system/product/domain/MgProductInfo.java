@@ -50,33 +50,11 @@ public class MgProductInfo extends BaseEntity
     @Excel(name = "适配型号")
     private String spxh;
 
-    /** 供应商A */
-    @Excel(name = "供应商A")
-    private String gysa;
+    /** 起订量 */
+    @Excel(name = "起订量")
+    private String qdl;
 
-    /** 采购价A */
-    @Excel(name = "采购价A")
-    private String cgja;
 
-    /** 供应商B */
-    @Excel(name = "供应商B")
-    private String gysb;
-
-    /** 采购价B */
-    @Excel(name = "采购价B")
-    private String cgjb;
-
-    /** 备注 */
-    @Excel(name = "备注")
-    private String bz;
-
-    /** 询盘情况（关联） */
-    @Excel(name = "询盘情况", readConverterExp = "关=联")
-    private String xp;
-
-    /** 订单情况（关联） */
-    @Excel(name = "订单情况", readConverterExp = "关=联")
-    private String dd;
 
     /** 价格 */
     @Excel(name = "价格")
@@ -90,216 +68,149 @@ public class MgProductInfo extends BaseEntity
     @Excel(name = "满箱外箱尺寸")
     private String mxwxcc;
 
+    /** 满箱毛重 */
+    @Excel(name = "满箱毛重")
+    private String mxmz;
+
     /** 计费重 */
     @Excel(name = "计费重")
     private String jfz;
 
-    public void setId(Long id) 
-    {
+
+    /** 备注 */
+    @Excel(name = "备注")
+    private String bz;
+
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getId() 
-    {
-        return id;
+    public String getProductName() {
+        return productName;
     }
-    public void setProductName(String productName) 
-    {
+
+    public void setProductName(String productName) {
         this.productName = productName;
     }
 
-    public String getProductName() 
-    {
-        return productName;
+    public String getProductNameEn() {
+        return productNameEn;
     }
-    public void setProductNameEn(String productNameEn) 
-    {
+
+    public void setProductNameEn(String productNameEn) {
         this.productNameEn = productNameEn;
     }
 
-    public String getProductNameEn() 
-    {
-        return productNameEn;
+    public String getSku() {
+        return sku;
     }
-    public void setSku(String sku) 
-    {
+
+    public void setSku(String sku) {
         this.sku = sku;
     }
 
-    public String getSku() 
-    {
-        return sku;
+    public String getOe() {
+        return oe;
     }
-    public void setOe(String oe) 
-    {
+
+    public void setOe(String oe) {
         this.oe = oe;
     }
 
-    public String getOe() 
-    {
-        return oe;
+    public String getZl() {
+        return zl;
     }
-    public void setZl(String zl) 
-    {
+
+    public void setZl(String zl) {
         this.zl = zl;
     }
 
-    public String getZl() 
-    {
-        return zl;
+    public String getCc() {
+        return cc;
     }
-    public void setCc(String cc) 
-    {
+
+    public void setCc(String cc) {
         this.cc = cc;
     }
 
-    public String getCc() 
-    {
-        return cc;
+    public String getCpp() {
+        return cpp;
     }
-    public void setCpp(String cpp) 
-    {
+
+    public void setCpp(String cpp) {
         this.cpp = cpp;
     }
 
-    public String getCpp() 
-    {
-        return cpp;
+    public String getSpxh() {
+        return spxh;
     }
-    public void setSpxh(String spxh) 
-    {
+
+    public void setSpxh(String spxh) {
         this.spxh = spxh;
     }
 
-    public String getSpxh() 
-    {
-        return spxh;
-    }
-    public void setGysa(String gysa) 
-    {
-        this.gysa = gysa;
+    public String getQdl() {
+        return qdl;
     }
 
-    public String getGysa() 
-    {
-        return gysa;
-    }
-    public void setCgja(String cgja) 
-    {
-        this.cgja = cgja;
+    public void setQdl(String qdl) {
+        this.qdl = qdl;
     }
 
-    public String getCgja() 
-    {
-        return cgja;
-    }
-    public void setGysb(String gysb) 
-    {
-        this.gysb = gysb;
+    public String getJg() {
+        return jg;
     }
 
-    public String getGysb() 
-    {
-        return gysb;
-    }
-    public void setCgjb(String cgjb) 
-    {
-        this.cgjb = cgjb;
-    }
-
-    public String getCgjb() 
-    {
-        return cgjb;
-    }
-    public void setBz(String bz) 
-    {
-        this.bz = bz;
-    }
-
-    public String getBz() 
-    {
-        return bz;
-    }
-    public void setXp(String xp) 
-    {
-        this.xp = xp;
-    }
-
-    public String getXp() 
-    {
-        return xp;
-    }
-    public void setDd(String dd) 
-    {
-        this.dd = dd;
-    }
-
-    public String getDd() 
-    {
-        return dd;
-    }
-    public void setJg(String jg) 
-    {
+    public void setJg(String jg) {
         this.jg = jg;
     }
 
-    public String getJg() 
-    {
-        return jg;
+    public String getMxs() {
+        return mxs;
     }
-    public void setMxs(String mxs) 
-    {
+
+    public void setMxs(String mxs) {
         this.mxs = mxs;
     }
 
-    public String getMxs() 
-    {
-        return mxs;
+    public String getMxwxcc() {
+        return mxwxcc;
     }
-    public void setMxwxcc(String mxwxcc) 
-    {
+
+    public void setMxwxcc(String mxwxcc) {
         this.mxwxcc = mxwxcc;
     }
 
-    public String getMxwxcc() 
-    {
-        return mxwxcc;
-    }
-    public void setJfz(String jfz) 
-    {
-        this.jfz = jfz;
+    public String getMxmz() {
+        return mxmz;
     }
 
-    public String getJfz() 
-    {
+    public void setMxmz(String mxmz) {
+        this.mxmz = mxmz;
+    }
+
+    public String getJfz() {
         return jfz;
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("id", getId())
-            .append("productName", getProductName())
-            .append("productNameEn", getProductNameEn())
-            .append("sku", getSku())
-            .append("oe", getOe())
-            .append("zl", getZl())
-            .append("cc", getCc())
-            .append("cpp", getCpp())
-            .append("spxh", getSpxh())
-            .append("gysa", getGysa())
-            .append("cgja", getCgja())
-            .append("gysb", getGysb())
-            .append("cgjb", getCgjb())
-            .append("bz", getBz())
-            .append("xp", getXp())
-            .append("dd", getDd())
-            .append("createTime", getCreateTime())
-            .append("updateTime", getUpdateTime())
-            .append("jg", getJg())
-            .append("mxs", getMxs())
-            .append("mxwxcc", getMxwxcc())
-            .append("jfz", getJfz())
-            .toString();
+    public void setJfz(String jfz) {
+        this.jfz = jfz;
+    }
+
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
     }
 }

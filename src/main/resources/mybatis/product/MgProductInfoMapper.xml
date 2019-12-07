@@ -14,23 +14,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="cc"    column="cc"    />
         <result property="cpp"    column="cpp"    />
         <result property="spxh"    column="spxh"    />
-        <result property="gysa"    column="gysa"    />
-        <result property="cgja"    column="cgja"    />
-        <result property="gysb"    column="gysb"    />
-        <result property="cgjb"    column="cgjb"    />
+        <result property="qdl"    column="qdl"    />
+
         <result property="bz"    column="bz"    />
-        <result property="xp"    column="xp"    />
-        <result property="dd"    column="dd"    />
+
         <result property="createTime"    column="create_time"    />
         <result property="updateTime"    column="update_time"    />
         <result property="jg"    column="jg"    />
         <result property="mxs"    column="mxs"    />
         <result property="mxwxcc"    column="mxwxcc"    />
+        <result property="mxmz"    column="mxmz"    />
         <result property="jfz"    column="jfz"    />
     </resultMap>
 
     <sql id="selectMgProductInfoVo">
-        select id, product_name, product_name_en, SKU, OE, zl, cc, cpp, spxh, gysa, cgja, gysb, cgjb, bz, xp, dd, create_time, update_time, jg, mxs, mxwxcc, jfz from mg_product_info
+        select id, product_name, product_name_en, SKU, OE, zl, cc, cpp, spxh, qdl, bz,  create_time, update_time, jg, mxs, mxwxcc,mxmz, jfz from mg_product_info
     </sql>
 
     <select id="selectMgProductInfoList" parameterType="MgProductInfo" resultMap="MgProductInfoResult">
@@ -44,13 +42,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="cc != null  and cc != ''"> and cc = #{cc}</if>
             <if test="cpp != null  and cpp != ''">like concat('%',  #{cpp}, '%')</if>
             <if test="spxh != null  and spxh != ''"> and spxh like concat('%', #{spxh}, '%')</if>
-            <if test="gysa != null  and gysa != ''"> and gysa = #{gysa}</if>
-            <if test="cgja != null  and cgja != ''"> and cgja = #{cgja}</if>
-            <if test="gysb != null  and gysb != ''"> and gysb = #{gysb}</if>
-            <if test="cgjb != null  and cgjb != ''"> and cgjb = #{cgjb}</if>
+
             <if test="bz != null  and bz != ''"> and bz = #{bz}</if>
-            <if test="xp != null  and xp != ''"> and xp = #{xp}</if>
-            <if test="dd != null  and dd != ''"> and dd = #{dd}</if>
+
             <if test="jg != null  and jg != ''"> and jg = #{jg}</if>
             <if test="mxs != null  and mxs != ''"> and mxs = #{mxs}</if>
             <if test="mxwxcc != null  and mxwxcc != ''"> and mxwxcc = #{mxwxcc}</if>
@@ -74,18 +68,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="cc != null  and cc != ''">cc,</if>
             <if test="cpp != null  and cpp != ''">cpp,</if>
             <if test="spxh != null  and spxh != ''">spxh,</if>
-            <if test="gysa != null  and gysa != ''">gysa,</if>
-            <if test="cgja != null  and cgja != ''">cgja,</if>
-            <if test="gysb != null  and gysb != ''">gysb,</if>
-            <if test="cgjb != null  and cgjb != ''">cgjb,</if>
+            <if test="qdl != null  and qdl != ''">qdl,</if>
+
             <if test="bz != null  and bz != ''">bz,</if>
-            <if test="xp != null  and xp != ''">xp,</if>
-            <if test="dd != null  and dd != ''">dd,</if>
+
             <if test="createTime != null ">create_time,</if>
             <if test="updateTime != null ">update_time,</if>
             <if test="jg != null  and jg != ''">jg,</if>
             <if test="mxs != null  and mxs != ''">mxs,</if>
             <if test="mxwxcc != null  and mxwxcc != ''">mxwxcc,</if>
+            <if test="mxmz != null  and mxmz != ''">mxmz,</if>
             <if test="jfz != null  and jfz != ''">jfz,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -97,18 +89,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="cc != null  and cc != ''">#{cc},</if>
             <if test="cpp != null  and cpp != ''">#{cpp},</if>
             <if test="spxh != null  and spxh != ''">#{spxh},</if>
-            <if test="gysa != null  and gysa != ''">#{gysa},</if>
-            <if test="cgja != null  and cgja != ''">#{cgja},</if>
-            <if test="gysb != null  and gysb != ''">#{gysb},</if>
-            <if test="cgjb != null  and cgjb != ''">#{cgjb},</if>
+            <if test="qdl != null  and qdl != ''">#{qdl},</if>
+
             <if test="bz != null  and bz != ''">#{bz},</if>
-            <if test="xp != null  and xp != ''">#{xp},</if>
-            <if test="dd != null  and dd != ''">#{dd},</if>
+
             <if test="createTime != null ">#{createTime},</if>
             <if test="updateTime != null ">#{updateTime},</if>
             <if test="jg != null  and jg != ''">#{jg},</if>
             <if test="mxs != null  and mxs != ''">#{mxs},</if>
             <if test="mxwxcc != null  and mxwxcc != ''">#{mxwxcc},</if>
+            <if test="mxmz != null  and mxmz != ''">#{mxmz},</if>
             <if test="jfz != null  and jfz != ''">#{jfz},</if>
          </trim>
     </insert>
@@ -124,18 +114,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="cc != null  and cc != ''">cc = #{cc},</if>
             <if test="cpp != null  and cpp != ''">cpp = #{cpp},</if>
             <if test="spxh != null  and spxh != ''">spxh = #{spxh},</if>
-            <if test="gysa != null  and gysa != ''">gysa = #{gysa},</if>
-            <if test="cgja != null  and cgja != ''">cgja = #{cgja},</if>
-            <if test="gysb != null  and gysb != ''">gysb = #{gysb},</if>
-            <if test="cgjb != null  and cgjb != ''">cgjb = #{cgjb},</if>
+            <if test="qdl != null  and qdl != ''">qdl = #{qdl},</if>
+
             <if test="bz != null  and bz != ''">bz = #{bz},</if>
-            <if test="xp != null  and xp != ''">xp = #{xp},</if>
-            <if test="dd != null  and dd != ''">dd = #{dd},</if>
+
             <if test="createTime != null ">create_time = #{createTime},</if>
             <if test="updateTime != null ">update_time = #{updateTime},</if>
             <if test="jg != null  and jg != ''">jg = #{jg},</if>
             <if test="mxs != null  and mxs != ''">mxs = #{mxs},</if>
             <if test="mxwxcc != null  and mxwxcc != ''">mxwxcc = #{mxwxcc},</if>
+            <if test="mxmz != null  and mxmz != ''">mxmz = #{mxmz},</if>
             <if test="jfz != null  and jfz != ''">jfz = #{jfz},</if>
         </trim>
         where id = #{id}
