@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="productName != null  and productName != ''"> and product_name like concat('%', #{productName}, '%')</if>
             <if test="productNameEn != null  and productNameEn != ''"> and product_name_en = #{productNameEn}</if>
             <if test="sku != null  and sku != ''"> and SKU = #{sku}</if>
-            <if test="oe != null  and oe != ''"> and OE  like concat('%',  #{oe}, '%')</if>
+            <if test="oe != null  and oe != ''"> and OE  regexp #{oe}</if>
             <if test="zl != null  and zl != ''"> and zl = #{zl}</if>
             <if test="cc != null  and cc != ''"> and cc = #{cc}</if>
             <if test="cpp != null  and cpp != ''">like concat('%',  #{cpp}, '%')</if>
