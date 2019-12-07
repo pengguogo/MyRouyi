@@ -1,7 +1,9 @@
 package com.ruoyi.project.system.product.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.project.system.user.domain.User;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,8 +55,21 @@ public class MgProductInfoController extends BaseController
     public TableDataInfo list(MgProductInfo mgProductInfo)
     {
         startPage();
+        String oes[] ={};
+        if (!StringUtils.isEmpty(mgProductInfo.getOe())){
+            oes = mgProductInfo.getOe().split("\\|");
+        }
         List<MgProductInfo> list = mgProductInfoService.selectMgProductInfoList(mgProductInfo);
-        return getDataTable(list);
+        List<MgProductInfo> reList = new ArrayList<>();
+        for (String oe : oes){
+            for (MgProductInfo info:
+            list) {
+                if (info.getOe().indexOf(oe) > -1){
+                    reList.add(info);
+                }
+            }
+        }
+        return getDataTable(reList);
     }
 
     @Log(title = "产品管理", businessType = BusinessType.IMPORT)
