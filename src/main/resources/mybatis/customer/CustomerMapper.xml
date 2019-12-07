@@ -12,35 +12,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="khfl"    column="khfl"    />
         <result property="khdz"    column="khdz"    />
         <result property="gxqcp"    column="gxqcp"    />
-        <result property="sl"    column="sl"    />
+        <result property="gsm"    column="gsm"    />
         <result property="cx"    column="cx"    />
-        <result property="oe"    column="oe"    />
-        <result property="bj"    column="bj"    />
         <result property="yx"    column="yx"    />
-        <result property="sku"    column="sku"    />
+        <result property="wz"    column="wz"    />
+        <result property="bz"    column="bz"    />
         <result property="createTime"    column="create_time"    />
         <result property="updateTime"    column="update_time"    />
     </resultMap>
 
     <sql id="selectCustomerVo">
-        select id, khm, gj, lxfs, khfl, khdz, gxqcp, sl, cx, oe, bj, yx, sku, create_time, update_time from customer
+        select id, khm, gj, lxfs, khfl, khdz, gxqcp, gsm, cx,  yx, wz, bz,   create_time, update_time from customer
     </sql>
 
     <select id="selectCustomerList" parameterType="Customer" resultMap="CustomerResult">
         <include refid="selectCustomerVo"/>
         <where>  
             <if test="khm != null  and khm != ''"> and khm like concat('%', #{khm}, '%') </if>
+            <if test="gsm != null  and gsm != ''"> and gsm like concat('%', #{gsm}, '%') </if>
             <if test="gj != null  and gj != ''"> and gj like concat('%', #{gj}, '%')</if>
             <if test="lxfs != null  and lxfs != ''"> and lxfs like concat('%', #{lxfs}, '%')</if>
             <if test="khfl != null  and khfl != ''"> and khfl like concat('%', #{khfl}, '%')</if>
             <if test="khdz != null  and khdz != ''"> and khdz = #{khdz}</if>
             <if test="gxqcp != null  and gxqcp != ''"> and gxqcp = #{gxqcp}</if>
-            <if test="sl != null  and sl != ''"> and sl = #{sl}</if>
             <if test="cx != null  and cx != ''"> and cx = #{cx}</if>
-            <if test="oe != null  and oe != ''"> and oe = #{oe}</if>
-            <if test="bj != null  and bj != ''"> and bj = #{bj}</if>
             <if test="yx != null  and yx != ''"> and yx = #{yx}</if>
-            <if test="sku != null  and sku != ''"> and sku = #{sku}</if>
         </where>
     </select>
     
@@ -58,12 +54,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="khfl != null  and khfl != ''">khfl,</if>
             <if test="khdz != null  and khdz != ''">khdz,</if>
             <if test="gxqcp != null  and gxqcp != ''">gxqcp,</if>
-            <if test="sl != null  and sl != ''">sl,</if>
             <if test="cx != null  and cx != ''">cx,</if>
-            <if test="oe != null  and oe != ''">oe,</if>
-            <if test="bj != null  and bj != ''">bj,</if>
             <if test="yx != null  and yx != ''">yx,</if>
-            <if test="sku != null  and sku != ''">sku,</if>
+            <if test="gsm != null  and gsm != ''">gsm,</if>
+            <if test="wz != null  and wz != ''">wz,</if>
+            <if test="bz != null  and bz != ''">bz,</if>
             <if test="createTime != null ">create_time,</if>
             <if test="updateTime != null ">update_time,</if>
          </trim>
@@ -74,12 +69,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="khfl != null  and khfl != ''">#{khfl},</if>
             <if test="khdz != null  and khdz != ''">#{khdz},</if>
             <if test="gxqcp != null  and gxqcp != ''">#{gxqcp},</if>
-            <if test="sl != null  and sl != ''">#{sl},</if>
             <if test="cx != null  and cx != ''">#{cx},</if>
-            <if test="oe != null  and oe != ''">#{oe},</if>
-            <if test="bj != null  and bj != ''">#{bj},</if>
             <if test="yx != null  and yx != ''">#{yx},</if>
-            <if test="sku != null  and sku != ''">#{sku},</if>
+            <if test="gsm != null  and gsm != ''">#{gsm},</if>
+            <if test="wz != null  and wz != ''">#{wz},</if>
+            <if test="bz != null  and bz != ''">#{bz},</if>
             <if test="createTime != null ">#{createTime},</if>
             <if test="updateTime != null ">#{updateTime},</if>
          </trim>
@@ -94,12 +88,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="khfl != null  and khfl != ''">khfl = #{khfl},</if>
             <if test="khdz != null  and khdz != ''">khdz = #{khdz},</if>
             <if test="gxqcp != null  and gxqcp != ''">gxqcp = #{gxqcp},</if>
-            <if test="sl != null  and sl != ''">sl = #{sl},</if>
             <if test="cx != null  and cx != ''">cx = #{cx},</if>
-            <if test="oe != null  and oe != ''">oe = #{oe},</if>
-            <if test="bj != null  and bj != ''">bj = #{bj},</if>
             <if test="yx != null  and yx != ''">yx = #{yx},</if>
-            <if test="sku != null  and sku != ''">sku = #{sku},</if>
+            <if test="gsm != null  and gsm != ''">gsm = #{gsm},</if>
+            <if test="wz != null  and wz != ''">wz = #{wz},</if>
+            <if test="bz != null  and bz != ''">bz = #{bz},</if>
             <if test="createTime != null ">create_time = #{createTime},</if>
             <if test="updateTime != null ">update_time = #{updateTime},</if>
         </trim>

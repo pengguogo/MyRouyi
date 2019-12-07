@@ -85,6 +85,10 @@ public class Order extends BaseEntity
     @Excel(name = "供应商")
     private Long gysId;
 
+    /** 备注 */
+    @Excel(name = "备注")
+    private String bz;
+
 
 
     public void setId(Long id) 
@@ -258,29 +262,11 @@ public class Order extends BaseEntity
         this.sl = sl;
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("id", getId())
-            .append("customerId", getCustomerId())
-            .append("cpId", getCpId())
-            .append("gysId", getGysId())
-            .append("orderno", getOrderno())
-            .append("type", getType())
-            .append("customer", getCustomer())
-            .append("cp", getCp())
-            .append("sku", getSku())
-            .append("oe", getOe())
-            .append("spxh", getSpxh())
-            .append("cgj", getCgj())
-            .append("gys", getGys())
-            .append("yf", getYf())
-            .append("xssj", getXssj())
-            .append("cpje", getCpje())
-            .append("ddzje", getDdzje())
-            .append("jfz", getJfz())
-            .append("createTime", getCreateTime())
-            .append("updateTime", getUpdateTime())
-            .toString();
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
     }
 }

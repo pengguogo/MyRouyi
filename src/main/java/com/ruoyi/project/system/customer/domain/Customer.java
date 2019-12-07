@@ -42,166 +42,124 @@ public class Customer extends BaseEntity
     @Excel(name = "感兴趣产品")
     private String gxqcp;
 
-    /** 数量 */
-    @Excel(name = "数量")
-    private String sl;
+    /** 公司名 */
+    @Excel(name = "公司名")
+    private String gsm;
 
     /** 车型 */
     @Excel(name = "车型")
     private String cx;
 
-    /** OE号 */
-    @Excel(name = "OE号")
-    private String oe;
-
-    /** 报价 */
-    @Excel(name = "报价")
-    private String bj;
 
     /** 邮箱 */
     @Excel(name = "邮箱")
     private String yx;
 
-    /** sku */
-    @Excel(name = "sku")
-    private String sku;
+    /** 网址 */
+    @Excel(name = "网址")
+    private String wz;
 
-    public void setId(Long id) 
-    {
+    /** 备注 */
+    @Excel(name = "bz")
+    private String bz;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getId() 
-    {
-        return id;
+    public String getKhm() {
+        return khm;
     }
-    public void setKhm(String khm) 
-    {
+
+    public void setKhm(String khm) {
         this.khm = khm;
     }
 
-    public String getKhm() 
-    {
-        return khm;
+    public String getGj() {
+        return gj;
     }
-    public void setGj(String gj) 
-    {
+
+    public void setGj(String gj) {
         this.gj = gj;
     }
 
-    public String getGj() 
-    {
-        return gj;
+    public String getLxfs() {
+        return lxfs;
     }
-    public void setLxfs(String lxfs) 
-    {
+
+    public void setLxfs(String lxfs) {
         this.lxfs = lxfs;
     }
 
-    public String getLxfs() 
-    {
-        return lxfs;
+    public String getKhfl() {
+        return khfl;
     }
-    public void setKhfl(String khfl) 
-    {
+
+    public void setKhfl(String khfl) {
         this.khfl = khfl;
     }
 
-    public String getKhfl() 
-    {
-        return khfl;
+    public String getKhdz() {
+        return khdz;
     }
-    public void setKhdz(String khdz) 
-    {
+
+    public void setKhdz(String khdz) {
         this.khdz = khdz;
     }
 
-    public String getKhdz() 
-    {
-        return khdz;
+    public String getGxqcp() {
+        return gxqcp;
     }
-    public void setGxqcp(String gxqcp) 
-    {
+
+    public void setGxqcp(String gxqcp) {
         this.gxqcp = gxqcp;
     }
 
-    public String getGxqcp() 
-    {
-        return gxqcp;
-    }
-    public void setSl(String sl) 
-    {
-        this.sl = sl;
+    public String getGsm() {
+        return gsm;
     }
 
-    public String getSl() 
-    {
-        return sl;
+    public void setGsm(String gsm) {
+        this.gsm = gsm;
     }
-    public void setCx(String cx) 
-    {
+
+    public String getCx() {
+        return cx;
+    }
+
+    public void setCx(String cx) {
         this.cx = cx;
     }
 
-    public String getCx() 
-    {
-        return cx;
-    }
-    public void setOe(String oe) 
-    {
-        this.oe = oe;
+    public String getYx() {
+        return yx;
     }
 
-    public String getOe() 
-    {
-        return oe;
-    }
-    public void setBj(String bj) 
-    {
-        this.bj = bj;
-    }
-
-    public String getBj() 
-    {
-        return bj;
-    }
-    public void setYx(String yx) 
-    {
+    public void setYx(String yx) {
         this.yx = yx;
     }
 
-    public String getYx() 
-    {
-        return yx;
-    }
-    public void setSku(String sku) 
-    {
-        this.sku = sku;
+    public String getWz() {
+        return wz;
     }
 
-    public String getSku() 
-    {
-        return sku;
+    public void setWz(String wz) {
+        this.wz = wz;
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("id", getId())
-            .append("khm", getKhm())
-            .append("gj", getGj())
-            .append("lxfs", getLxfs())
-            .append("khfl", getKhfl())
-            .append("khdz", getKhdz())
-            .append("gxqcp", getGxqcp())
-            .append("sl", getSl())
-            .append("cx", getCx())
-            .append("oe", getOe())
-            .append("bj", getBj())
-            .append("yx", getYx())
-            .append("sku", getSku())
-            .append("createTime", getCreateTime())
-            .append("updateTime", getUpdateTime())
-            .toString();
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
     }
 }

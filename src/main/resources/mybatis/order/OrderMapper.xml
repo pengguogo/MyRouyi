@@ -25,12 +25,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="sl"    column="sl"    />
         <result property="ddzje"    column="ddzje"    />
         <result property="jfz"    column="jfz"    />
+        <result property="bz"    column="bz"    />
         <result property="createTime"    column="create_time"    />
         <result property="updateTime"    column="update_time"    />
     </resultMap>
 
     <sql id="selectOrderVo">
-        select id, customer_id, cp_id, gys_id, orderno, type, customer, cp, SKU, OE, spxh, cgj, gys, yf, xssj, cpje,sl, ddzje, jfz, create_time, update_time from `order`
+        select id, customer_id, cp_id, gys_id, orderno, type, customer, cp, SKU, OE, spxh, cgj, gys, yf, xssj, cpje,sl, ddzje, jfz,bz, create_time, update_time from `order`
     </sql>
 
     <select id="selectOrderList" parameterType="Order" resultMap="OrderResult">
@@ -82,6 +83,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="sl != null  and sl != ''">sl,</if>
             <if test="ddzje != null  and ddzje != ''">ddzje,</if>
             <if test="jfz != null  and jfz != ''">jfz,</if>
+            <if test="bz != null  and bz != ''">bz,</if>
             <if test="createTime != null ">create_time,</if>
             <if test="updateTime != null ">update_time,</if>
          </trim>
@@ -104,6 +106,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="sl != null  and sl != ''">#{sl},</if>
             <if test="ddzje != null  and ddzje != ''">#{ddzje},</if>
             <if test="jfz != null  and jfz != ''">#{jfz},</if>
+            <if test="bz != null  and bz != ''">#{bz},</if>
             <if test="createTime != null ">#{createTime},</if>
             <if test="updateTime != null ">#{updateTime},</if>
          </trim>
@@ -130,6 +133,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="sl != null  and sl != ''">sl = #{sl},</if>
             <if test="ddzje != null  and ddzje != ''">ddzje = #{ddzje},</if>
             <if test="jfz != null  and jfz != ''">jfz = #{jfz},</if>
+            <if test="bz != null  and bz != ''">bz = #{bz},</if>
             <if test="createTime != null ">create_time = #{createTime},</if>
             <if test="updateTime != null ">update_time = #{updateTime},</if>
         </trim>
