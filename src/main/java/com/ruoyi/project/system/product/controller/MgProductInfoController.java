@@ -60,6 +60,9 @@ public class MgProductInfoController extends BaseController
             oes = mgProductInfo.getOe().split("\\|");
         }
         List<MgProductInfo> list = mgProductInfoService.selectMgProductInfoList(mgProductInfo);
+        if (StringUtils.isEmpty(mgProductInfo.getOe())){
+        return getDataTable(list);
+        }
         List<MgProductInfo> reList = new ArrayList<>();
         for (String oe : oes){
             for (MgProductInfo info:
