@@ -40,7 +40,13 @@
                             <p class="pull-right">[[${product.oe}]]</p>
                         </li>
 
-                    </ul>
+                        <ul class="list-group list-group-striped">
+                            <li class="list-group-item"><i class="fa fa-user"></i>
+                                <b class="font-noraml">图片：</b>
+                                <p><img class="img-circle img-lg"  th:src="(${product.tp} == '') ? @{/img/profile.jpg} : @{${product.tp}}"></p>
+                            </li>
+
+
                     <ul class="list-group list-group-striped">
                         <li class="list-group-item"><i class="fa fa-user"></i>
                             <b class="font-noraml">重量：</b>
