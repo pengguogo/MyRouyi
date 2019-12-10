@@ -72,40 +72,44 @@ public  class ProductImport {
                 }
                 if(row.getCell(6)!=null){
                     row.getCell(6).setCellType(CellType.STRING);
-                    mgProductInfo.setCpp(row.getCell(6).getStringCellValue());
+                    mgProductInfo.setCc(row.getCell(6).getStringCellValue());
                 }
                 if(row.getCell(7)!=null){
                     row.getCell(7).setCellType(CellType.STRING);
-                    mgProductInfo.setSpxh(row.getCell(7).getStringCellValue());
+                    mgProductInfo.setCpp(row.getCell(7).getStringCellValue());
                 }
                 if(row.getCell(8)!=null){
                     row.getCell(8).setCellType(CellType.STRING);
-                    mgProductInfo.setQdl(row.getCell(8).getStringCellValue());
+                    mgProductInfo.setSpxh(row.getCell(8).getStringCellValue());
                 }
                 if(row.getCell(9)!=null){
                     row.getCell(9).setCellType(CellType.STRING);
-                    mgProductInfo.setJg(row.getCell(9).getStringCellValue());
+                    mgProductInfo.setQdl(row.getCell(9).getStringCellValue());
                 }
                 if(row.getCell(10)!=null){
                     row.getCell(10).setCellType(CellType.STRING);
-                    mgProductInfo.setMxs(row.getCell(10).getStringCellValue());
+                    mgProductInfo.setJg(row.getCell(10).getStringCellValue());
                 }
                 if(row.getCell(11)!=null){
                     row.getCell(11).setCellType(CellType.STRING);
-                    mgProductInfo.setMxwxcc(row.getCell(11).getStringCellValue());
+                    mgProductInfo.setMxs(row.getCell(11).getStringCellValue());
                 }
-
                 if(row.getCell(12)!=null){
                     row.getCell(12).setCellType(CellType.STRING);
-                    mgProductInfo.setMxmz(row.getCell(12).getStringCellValue());
+                    mgProductInfo.setMxwxcc(row.getCell(12).getStringCellValue());
                 }
+
                 if(row.getCell(13)!=null){
                     row.getCell(13).setCellType(CellType.STRING);
-                    mgProductInfo.setJfz(row.getCell(13).getStringCellValue());
+                    mgProductInfo.setMxmz(row.getCell(13).getStringCellValue());
                 }
                 if(row.getCell(14)!=null){
                     row.getCell(14).setCellType(CellType.STRING);
-                    mgProductInfo.setBz(row.getCell(14).getStringCellValue());
+                    mgProductInfo.setJfz(row.getCell(14).getStringCellValue());
+                }
+                if(row.getCell(15)!=null){
+                    row.getCell(15).setCellType(CellType.STRING);
+                    mgProductInfo.setBz(row.getCell(15).getStringCellValue());
                 }
 
                 mgList.add(mgProductInfo);
@@ -185,7 +189,13 @@ public  class ProductImport {
                 XSSFDrawing drawing = (XSSFDrawing) dr;
                 List<XSSFShape> shapes = drawing.getShapes();
                 for (XSSFShape shape : shapes) {
-                    XSSFPicture pic = (XSSFPicture) shape;
+                    XSSFPicture pic;
+                    try {
+                         pic = (XSSFPicture) shape;
+                    }catch (Exception e){
+                       e.printStackTrace();
+                       continue;
+                    }
                     XSSFClientAnchor anchor = pic.getPreferredSize();
                     CTMarker ctMarker = anchor.getFrom();
                     PicturePosition picturePosition = PicturePosition.newInstance(ctMarker.getRow(), ctMarker.getCol());
