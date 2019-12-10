@@ -6,7 +6,7 @@
 <body class="white-bg">
     <div class="wrapper wrapper-content animated fadeInRight ibox-content">
         <form class="form-horizontal m" id="form-product-edit" th:object="${mgProductInfo}">
-            <input name="id" th:field="*{id}" type="hidden">
+            <input name="id" id = "id" th:field="*{id}" type="hidden">
             <div class="form-group">
                 <label class="col-sm-3 control-label">产品名称：</label>
                 <div class="col-sm-8">
@@ -29,6 +29,14 @@
                 <label class="col-sm-3 control-label">OE：</label>
                 <div class="col-sm-8">
                     <textarea name="oe" class="form-control">[[*{oe}]]</textarea>
+                </div>
+            </div>
+            <div class="text-center">
+                <label class="col-sm-3 control-label">图片：</label>
+                <div class="col-sm-8">
+                <p><img class="img-circle img-lg"  th:src="(${mgProductInfo.tp} == '') ? @{/img/profile.jpg} : @{${mgProductInfo.tp}}"></p>
+                <p><a href="javascript:editPhoto()">修改图片</a></p>
+
                 </div>
             </div>
             <div class="form-group">
@@ -114,6 +122,13 @@
                 $.operate.save(prefix + "/edit", $('#form-product-edit').serialize());
             }
         }
+
+        /*用户管理-头像*/
+        function editPhoto() {
+            var url = prefix + '/photo/'+$('#id').val();
+            $.modal.open("修改产品图片", url);
+        }
+
     </script>
 </body>
 </html>

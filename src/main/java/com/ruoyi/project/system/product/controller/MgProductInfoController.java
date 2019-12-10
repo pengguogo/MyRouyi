@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.file.FileUploadUtils;
+import com.ruoyi.framework.config.RuoYiConfig;
+import com.ruoyi.project.system.product.utils.ProductImport;
 import com.ruoyi.project.system.user.domain.User;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.framework.aspectj.lang.annotation.Log;
 import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
 import com.ruoyi.project.system.product.domain.MgProductInfo;
@@ -75,6 +74,44 @@ public class MgProductInfoController extends BaseController
         return getDataTable(reList);
     }
 
+
+    /**
+     * 修改头像
+     */
+    @GetMapping("/photo/{id}")
+    public String avatar(@PathVariable("id") long id,ModelMap mmap)
+    {
+        MgProductInfo info = mgProductInfoService.selectMgProductInfoById(id);
+        mmap.put("product",info);
+        return prefix + "/profile/editPhoto";
+    }
+
+    /**
+     * 保存修改图片
+     */
+    @PostMapping("/profile/updatePhoto")
+    @ResponseBody
+    public AjaxResult updatePhoto(@RequestParam("photo") MultipartFile file,@RequestParam("id") long id)
+    {
+        try
+        {
+            if (!file.isEmpty())
+            {
+                String photo = FileUploadUtils.upload(RuoYiConfig.getAvatarPath(), file);
+                MgProductInfo info = mgProductInfoService.selectMgProductInfoById(id);
+                info.setTp(photo);
+                mgProductInfoService.updateMgProductInfo(info);
+                return success();
+
+            }
+            return error();
+        }
+        catch (Exception e)
+        {
+            return error(e.getMessage());
+        }
+    }
+
     @Log(title = "产品管理", businessType = BusinessType.IMPORT)
     @RequiresPermissions("product:product:import")
     @PostMapping("/importData")
@@ -82,7 +119,8 @@ public class MgProductInfoController extends BaseController
     public AjaxResult importData(MultipartFile file, boolean updateSupport) throws Exception
     {
         ExcelUtil<MgProductInfo> util = new ExcelUtil<MgProductInfo>(MgProductInfo.class);
-        List<MgProductInfo> mgProductInfos = util.importExcel(file.getInputStream());
+//        List<MgProductInfo> mgProductInfos = util.importExcel(file.getInputStream());
+        List<MgProductInfo> mgProductInfos = ProductImport.getList(file);
         for (MgProductInfo mgProductInfo:
         mgProductInfos) {
             mgProductInfoService.insertMgProductInfo(mgProductInfo);

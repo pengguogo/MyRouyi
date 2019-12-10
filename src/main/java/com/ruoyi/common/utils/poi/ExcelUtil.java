@@ -1,10 +1,7 @@
 package com.ruoyi.common.utils.poi;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
@@ -16,27 +13,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
+import com.ruoyi.common.utils.file.FileUploadUtils;
+import com.ruoyi.common.utils.file.FileUtils;
+import com.ruoyi.project.system.product.domain.MgProductInfo;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
-import org.apache.poi.ss.usermodel.BorderStyle;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.DataValidation;
-import org.apache.poi.ss.usermodel.DataValidationConstraint;
-import org.apache.poi.ss.usermodel.DataValidationHelper;
-import org.apache.poi.ss.usermodel.DateUtil;
-import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.HorizontalAlignment;
-import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.VerticalAlignment;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddressList;
+import org.apache.poi.xssf.streaming.SXSSFDrawing;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFDataValidation;
+import org.apache.poi.xssf.usermodel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.ruoyi.common.exception.BusinessException;
@@ -50,6 +36,8 @@ import com.ruoyi.framework.aspectj.lang.annotation.Excel.Type;
 import com.ruoyi.framework.aspectj.lang.annotation.Excels;
 import com.ruoyi.framework.config.RuoYiConfig;
 import com.ruoyi.framework.web.domain.AjaxResult;
+
+import javax.imageio.ImageIO;
 
 /**
  * Excel相关处理
@@ -208,6 +196,7 @@ public class ExcelUtil<T>
                 for (Map.Entry<Integer, Field> entry : fieldsMap.entrySet())
                 {
                     Object val = this.getCellValue(row, entry.getKey());
+
 
                     // 如果不存在实例则新建.
                     entity = (entity == null ? clazz.newInstance() : entity);
@@ -401,7 +390,7 @@ public class ExcelUtil<T>
                 Excel excel = (Excel) os[1];
                 // 设置实体类私有属性可访问
                 field.setAccessible(true);
-                this.addCell(excel, row, vo, field, column++);
+                this.addCell(excel, row, vo, field, column++,i);
             }
         }
     }
@@ -517,7 +506,7 @@ public class ExcelUtil<T>
     /**
      * 添加单元格
      */
-    public Cell addCell(Excel attr, Row row, T vo, Field field, int column)
+    public Cell addCell(Excel attr, Row row, T vo, Field field, int column, int num)
     {
         Cell cell = null;
         try
@@ -535,7 +524,29 @@ public class ExcelUtil<T>
                 Object value = getTargetValue(vo, field, attr);
                 String dateFormat = attr.dateFormat();
                 String readConverterExp = attr.readConverterExp();
-                if (StringUtils.isNotEmpty(dateFormat) && StringUtils.isNotNull(value))
+                if(column ==4 && String.valueOf(value).contains("profile/avatar") ){
+                    String imgUrl = RuoYiConfig.getAvatarPath()+String.valueOf(value);
+                    imgUrl =  imgUrl.replace("/profile/avatar","");
+                    if (new File(imgUrl).exists()) {
+                        BufferedImage bufferedImage = ImageIO.read(new File(imgUrl));
+                        ByteArrayOutputStream byteArrayOut = new ByteArrayOutputStream();
+
+                        int len = imgUrl.length();
+                        //图片类型
+                        String hou  = imgUrl.substring(len-4,len);
+                        ImageIO.write(bufferedImage,hou,byteArrayOut);
+                        byte[] data = byteArrayOut.toByteArray();
+                        XSSFClientAnchor anchor = new XSSFClientAnchor(100, 100, 255, 255,
+                                (short) column, num+1, (short) column+1, num+2);
+                        SXSSFDrawing patriarch = (SXSSFDrawing)sheet.createDrawingPatriarch();
+                        anchor.setAnchorType(ClientAnchor.AnchorType.MOVE_AND_RESIZE);
+                        // 插入图片
+                        patriarch.createPicture(anchor, wb.addPicture(data, XSSFWorkbook.PICTURE_TYPE_JPEG));
+
+                    }
+
+                }
+                else if (StringUtils.isNotEmpty(dateFormat) && StringUtils.isNotNull(value))
                 {
                     cell.setCellValue(DateUtils.parseDateToStr(dateFormat, (Date) value));
                 }

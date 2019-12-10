@@ -1,5 +1,6 @@
 package com.ruoyi.project.system.product.domain;
 
+import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.framework.aspectj.lang.annotation.Excel;
@@ -11,6 +12,7 @@ import com.ruoyi.framework.web.domain.BaseEntity;
  * @author pg
  * @date 2019-12-03
  */
+@Data
 public class MgProductInfo extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
@@ -33,6 +35,10 @@ public class MgProductInfo extends BaseEntity
     /** OE */
     @Excel(name = "OE")
     private String oe;
+
+    /** 图片 */
+    @Excel(name = "图片")
+    private String tp;
 
     /** 重量 */
     @Excel(name = "重量")
@@ -82,135 +88,4 @@ public class MgProductInfo extends BaseEntity
     private String bz;
 
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductNameEn() {
-        return productNameEn;
-    }
-
-    public void setProductNameEn(String productNameEn) {
-        this.productNameEn = productNameEn;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
-    }
-
-    public String getOe() {
-        return oe;
-    }
-
-    public void setOe(String oe) {
-        this.oe = oe;
-    }
-
-    public String getZl() {
-        return zl;
-    }
-
-    public void setZl(String zl) {
-        this.zl = zl;
-    }
-
-    public String getCc() {
-        return cc;
-    }
-
-    public void setCc(String cc) {
-        this.cc = cc;
-    }
-
-    public String getCpp() {
-        return cpp;
-    }
-
-    public void setCpp(String cpp) {
-        this.cpp = cpp;
-    }
-
-    public String getSpxh() {
-        return spxh;
-    }
-
-    public void setSpxh(String spxh) {
-        this.spxh = spxh;
-    }
-
-    public String getQdl() {
-        return qdl;
-    }
-
-    public void setQdl(String qdl) {
-        this.qdl = qdl;
-    }
-
-    public String getJg() {
-        return jg;
-    }
-
-    public void setJg(String jg) {
-        this.jg = jg;
-    }
-
-    public String getMxs() {
-        return mxs;
-    }
-
-    public void setMxs(String mxs) {
-        this.mxs = mxs;
-    }
-
-    public String getMxwxcc() {
-        return mxwxcc;
-    }
-
-    public void setMxwxcc(String mxwxcc) {
-        this.mxwxcc = mxwxcc;
-    }
-
-    public String getMxmz() {
-        return mxmz;
-    }
-
-    public void setMxmz(String mxmz) {
-        this.mxmz = mxmz;
-    }
-
-    public String getJfz() {
-        return jfz;
-    }
-
-    public void setJfz(String jfz) {
-        this.jfz = jfz;
-    }
-
-    public String getBz() {
-        return bz;
-    }
-
-    public void setBz(String bz) {
-        this.bz = bz;
-    }
 }

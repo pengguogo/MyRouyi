@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="productNameEn"    column="product_name_en"    />
         <result property="sku"    column="SKU"    />
         <result property="oe"    column="OE"    />
+        <result property="tp"    column="tp"    />
         <result property="zl"    column="zl"    />
         <result property="cc"    column="cc"    />
         <result property="cpp"    column="cpp"    />
@@ -28,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectMgProductInfoVo">
-        select id, product_name, product_name_en, SKU, OE, zl, cc, cpp, spxh, qdl, bz,  create_time, update_time, jg, mxs, mxwxcc,mxmz, jfz from mg_product_info
+        select id, product_name, product_name_en, SKU, OE,tp, zl, cc, cpp, spxh, qdl, bz,  create_time, update_time, jg, mxs, mxwxcc,mxmz, jfz from mg_product_info
     </sql>
 
     <select id="selectMgProductInfoList" parameterType="MgProductInfo" resultMap="MgProductInfoResult">
@@ -64,6 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="productNameEn != null  and productNameEn != ''">product_name_en,</if>
             <if test="sku != null  and sku != ''">SKU,</if>
             <if test="oe != null  and oe != ''">OE,</if>
+            <if test="tp != null  and oe != ''">tp,</if>
             <if test="zl != null  and zl != ''">zl,</if>
             <if test="cc != null  and cc != ''">cc,</if>
             <if test="cpp != null  and cpp != ''">cpp,</if>
@@ -85,6 +87,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="productNameEn != null  and productNameEn != ''">#{productNameEn},</if>
             <if test="sku != null  and sku != ''">#{sku},</if>
             <if test="oe != null  and oe != ''">#{oe},</if>
+            <if test="tp != null  and tp != ''">#{tp},</if>
             <if test="zl != null  and zl != ''">#{zl},</if>
             <if test="cc != null  and cc != ''">#{cc},</if>
             <if test="cpp != null  and cpp != ''">#{cpp},</if>
@@ -110,6 +113,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="productNameEn != null  and productNameEn != ''">product_name_en = #{productNameEn},</if>
             <if test="sku != null  and sku != ''">SKU = #{sku},</if>
             <if test="oe != null  and oe != ''">OE = #{oe},</if>
+            <if test="tp != null  and tp != ''">tp = #{tp},</if>
             <if test="zl != null  and zl != ''">zl = #{zl},</if>
             <if test="cc != null  and cc != ''">cc = #{cc},</if>
             <if test="cpp != null  and cpp != ''">cpp = #{cpp},</if>

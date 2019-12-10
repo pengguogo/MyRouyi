@@ -95,6 +95,13 @@
                     field : 'oe', 
                     title : 'OE'
                 },
+                    {
+                        field : 'tp',
+                        title : '图片',
+                        formatter: function(value, row, index) {
+                            return $.table.imageView(value);
+                        }
+                    },
                 {
                     field : 'zl', 
                     title : '重量'
