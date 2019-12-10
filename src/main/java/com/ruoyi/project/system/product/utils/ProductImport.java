@@ -55,45 +55,57 @@ public  class ProductImport {
             for (int i = 1; i < sheet.getLastRowNum(); i++) {
                 Row row = sheet.getRow(i);
                 MgProductInfo mgProductInfo = new MgProductInfo();
-                mgProductInfo.setProductName(row.getCell(0).toString());
-                mgProductInfo.setProductNameEn(row.getCell(1).toString());
+
+                mgProductInfo.setProductName(row.getCell(0).getStringCellValue());
+                mgProductInfo.setProductNameEn(row.getCell(1).getStringCellValue());
                 if(row.getCell(2)!=null){
-                    mgProductInfo.setSku(row.getCell(2).toString());
+                    mgProductInfo.setSku(row.getCell(2).getStringCellValue());
                 }
                 if(row.getCell(3)!=null){
-                    mgProductInfo.setOe(row.getCell(3).toString());
+                    row.getCell(3).setCellType(CellType.STRING);
+                    mgProductInfo.setOe(row.getCell(3).getStringCellValue());
                 }
                 mgProductInfo.setTp(pictureMap.get(PicturePosition.newInstance(i, 4)));
                 if(row.getCell(5)!=null){
-                    mgProductInfo.setZl(row.getCell(5).toString());
+                    row.getCell(5).setCellType(CellType.STRING);
+                    mgProductInfo.setZl(row.getCell(5).getStringCellValue());
                 }
                 if(row.getCell(6)!=null){
-                    mgProductInfo.setCpp(row.getCell(6).toString());
+                    row.getCell(6).setCellType(CellType.STRING);
+                    mgProductInfo.setCpp(row.getCell(6).getStringCellValue());
                 }
                 if(row.getCell(7)!=null){
-                    mgProductInfo.setSpxh(row.getCell(7).toString());
+                    row.getCell(7).setCellType(CellType.STRING);
+                    mgProductInfo.setSpxh(row.getCell(7).getStringCellValue());
                 }
                 if(row.getCell(8)!=null){
-                    mgProductInfo.setQdl(row.getCell(8).toString());
+                    row.getCell(8).setCellType(CellType.STRING);
+                    mgProductInfo.setQdl(row.getCell(8).getStringCellValue());
                 }
                 if(row.getCell(9)!=null){
-                    mgProductInfo.setJg(row.getCell(9).toString());
+                    row.getCell(9).setCellType(CellType.STRING);
+                    mgProductInfo.setJg(row.getCell(9).getStringCellValue());
                 }
                 if(row.getCell(10)!=null){
-                    mgProductInfo.setMxs(row.getCell(10).toString());
+                    row.getCell(10).setCellType(CellType.STRING);
+                    mgProductInfo.setMxs(row.getCell(10).getStringCellValue());
                 }
                 if(row.getCell(11)!=null){
-                    mgProductInfo.setMxwxcc(row.getCell(11).toString());
+                    row.getCell(11).setCellType(CellType.STRING);
+                    mgProductInfo.setMxwxcc(row.getCell(11).getStringCellValue());
                 }
 
                 if(row.getCell(12)!=null){
-                    mgProductInfo.setMxmz(row.getCell(12).toString());
+                    row.getCell(12).setCellType(CellType.STRING);
+                    mgProductInfo.setMxmz(row.getCell(12).getStringCellValue());
                 }
                 if(row.getCell(13)!=null){
-                    mgProductInfo.setJfz(row.getCell(13).toString());
+                    row.getCell(13).setCellType(CellType.STRING);
+                    mgProductInfo.setJfz(row.getCell(13).getStringCellValue());
                 }
                 if(row.getCell(14)!=null){
-                    mgProductInfo.setBz(row.getCell(14).toString());
+                    row.getCell(14).setCellType(CellType.STRING);
+                    mgProductInfo.setBz(row.getCell(14).getStringCellValue());
                 }
 
                 mgList.add(mgProductInfo);
