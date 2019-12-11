@@ -55,7 +55,9 @@ public  class ProductImport {
             for (int i = 1; i < sheet.getLastRowNum(); i++) {
                 Row row = sheet.getRow(i);
                 MgProductInfo mgProductInfo = new MgProductInfo();
-
+                if(row.getCell(0)==null){
+                    continue;
+                }
                 mgProductInfo.setProductName(row.getCell(0).getStringCellValue());
                 mgProductInfo.setProductNameEn(row.getCell(1).getStringCellValue());
                 if(row.getCell(2)!=null){
