@@ -21,6 +21,8 @@ import com.ruoyi.framework.web.controller.BaseController;
 import com.ruoyi.framework.web.domain.AjaxResult;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.framework.web.page.TableDataInfo;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -118,6 +120,8 @@ public class MgProductInfoController extends BaseController
     @ResponseBody
     public AjaxResult importData(MultipartFile file, boolean updateSupport) throws Exception
     {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        String logStr = "";
         ExcelUtil<MgProductInfo> util = new ExcelUtil<MgProductInfo>(MgProductInfo.class);
 //        List<MgProductInfo> mgProductInfos = util.importExcel(file.getInputStream());
         List<MgProductInfo> mgProductInfos = ProductImport.getList(file);

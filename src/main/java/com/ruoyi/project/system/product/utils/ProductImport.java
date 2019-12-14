@@ -52,7 +52,7 @@ public  class ProductImport {
             Sheet sheet = workbook.getSheetAt(0);
             int rows = sheet.getLastRowNum(); //读取行数
             //行遍历 跳过表头直接从数据开始读取
-            for (int i = 1; i < sheet.getLastRowNum(); i++) {
+            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
                 Row row = sheet.getRow(i);
                 MgProductInfo mgProductInfo = new MgProductInfo();
                 if(row.getCell(0)==null){
@@ -192,13 +192,15 @@ public  class ProductImport {
                 List<XSSFShape> shapes = drawing.getShapes();
                 for (XSSFShape shape : shapes) {
                     XSSFPicture pic;
+                    XSSFClientAnchor anchor;
                     try {
                          pic = (XSSFPicture) shape;
+                         anchor = pic.getPreferredSize();
                     }catch (Exception e){
                        e.printStackTrace();
                        continue;
                     }
-                    XSSFClientAnchor anchor = pic.getPreferredSize();
+
                     CTMarker ctMarker = anchor.getFrom();
                     PicturePosition picturePosition = PicturePosition.newInstance(ctMarker.getRow(), ctMarker.getCol());
 //                    if (pictureMap.get(picturePosition)!=null)

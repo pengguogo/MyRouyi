@@ -65,7 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="productNameEn != null  and productNameEn != ''">product_name_en,</if>
             <if test="sku != null  and sku != ''">SKU,</if>
             <if test="oe != null  and oe != ''">OE,</if>
-            <if test="tp != null  and oe != ''">tp,</if>
+            <if test="tp != null  and tp != ''">tp,</if>
             <if test="zl != null  and zl != ''">zl,</if>
             <if test="cc != null  and cc != ''">cc,</if>
             <if test="cpp != null  and cpp != ''">cpp,</if>
