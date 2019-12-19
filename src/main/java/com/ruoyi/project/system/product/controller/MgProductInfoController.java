@@ -68,7 +68,7 @@ public class MgProductInfoController extends BaseController
         for (String oe : oes){
             for (MgProductInfo info:
             list) {
-                if (info.getOe().indexOf(oe) > -1){
+                if (info.getOe().toUpperCase().indexOf(oe.toUpperCase()) > -1){
                     reList.add(info);
                 }
             }

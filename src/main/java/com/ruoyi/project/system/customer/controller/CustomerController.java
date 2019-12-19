@@ -2,6 +2,7 @@ package com.ruoyi.project.system.customer.controller;
 
 import java.util.List;
 
+import com.ruoyi.common.utils.file.FileUploadUtils;
 import com.ruoyi.project.system.product.domain.MgProductInfo;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
