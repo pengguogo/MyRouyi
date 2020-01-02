@@ -9,7 +9,8 @@ ruoyi:
   # 实例演示开关
   demoEnabled: false
   # 文件路径 示例（ Windows配置D:/ruoyi/uploadPath，Linux配置 /home/ruoyi/uploadPath）
-  profile: D:/MyRouyi/uploadPath
+  #profile: D:/MyRouyi/uploadPath
+  profile: /home/pg/uploadPath
   # 获取ip地址开关
   addressEnabled: true
 
@@ -136,7 +137,7 @@ gen:
   # 作者
   author: pengguo
   # 默认生成包路径 system 需改成自己的模块名称 如 system monitor tool
-  packageName: com.ruoyi.project.system
+  packageName: net.zlr.fengine
   # 自动去除表前缀，默认是true
   autoRemovePre: true
   # 表前缀（生成类名不会包含表前缀，多个用逗号分隔）

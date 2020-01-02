@@ -108,6 +108,7 @@ public class OrderServiceImpl implements IOrderService
         order.setUpdateTime(DateUtils.getNowDate());
         updateOrderInfo(order);
         return orderMapper.updateOrder(order);
+
     }
 
     /**
