@@ -4,7 +4,6 @@ import java.util.TimerTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.ruoyi.common.constant.Constants;
-import com.ruoyi.common.utils.AddressUtils;
 import com.ruoyi.common.utils.LogUtils;
 import com.ruoyi.common.utils.ServletUtils;
 import com.ruoyi.common.utils.security.ShiroUtils;
@@ -14,8 +13,6 @@ import com.ruoyi.project.monitor.logininfor.service.LogininforServiceImpl;
 import com.ruoyi.project.monitor.online.domain.OnlineSession;
 import com.ruoyi.project.monitor.online.domain.UserOnline;
 import com.ruoyi.project.monitor.online.service.IUserOnlineService;
-import com.ruoyi.project.monitor.operlog.domain.OperLog;
-import com.ruoyi.project.monitor.operlog.service.IOperLogService;
 import eu.bitwalker.useragentutils.UserAgent;
 
 /**
@@ -49,7 +46,7 @@ public class AsyncFactory
                 online.setLastAccessTime(session.getLastAccessTime());
                 online.setExpireTime(session.getTimeout());
                 online.setIpaddr(session.getHost());
-                online.setLoginLocation(AddressUtils.getRealAddressByIP(session.getHost()));
+//                online.setLoginLocation(AddressUtils.getRealAddressByIP(session.getHost()));
                 online.setBrowser(session.getBrowser());
                 online.setOs(session.getOs());
                 online.setStatus(session.getStatus());
@@ -60,25 +57,25 @@ public class AsyncFactory
         };
     }
 
-    /**
-     * 操作日志记录
-     * 
-     * @param operLog 操作日志信息
-     * @return 任务task
-     */
-    public static TimerTask recordOper(final OperLog operLog)
-    {
-        return new TimerTask()
-        {
-            @Override
-            public void run()
-            {
-                // 远程查询操作地点
-                operLog.setOperLocation(AddressUtils.getRealAddressByIP(operLog.getOperIp()));
-                SpringUtils.getBean(IOperLogService.class).insertOperlog(operLog);
-            }
-        };
-    }
+//    /**
+//     * 操作日志记录
+//     *
+//     * @param operLog 操作日志信息
+//     * @return 任务task
+//     */
+//    public static TimerTask recordOper(final OperLog operLog)
+//    {
+//        return new TimerTask()
+//        {
+//            @Override
+//            public void run()
+//            {
+//                // 远程查询操作地点
+//                operLog.setOperLocation(AddressUtils.getRealAddressByIP(operLog.getOperIp()));
+//                SpringUtils.getBean(IOperLogService.class).insertOperlog(operLog);
+//            }
+//        };
+//    }
 
     /**
      * 记录登陆信息
@@ -98,10 +95,10 @@ public class AsyncFactory
             @Override
             public void run()
             {
-                String address = AddressUtils.getRealAddressByIP(ip);
+//                String address = AddressUtils.getRealAddressByIP(ip);
                 StringBuilder s = new StringBuilder();
                 s.append(LogUtils.getBlock(ip));
-                s.append(address);
+//                s.append(address);
                 s.append(LogUtils.getBlock(username));
                 s.append(LogUtils.getBlock(status));
                 s.append(LogUtils.getBlock(message));
@@ -115,7 +112,7 @@ public class AsyncFactory
                 Logininfor logininfor = new Logininfor();
                 logininfor.setLoginName(username);
                 logininfor.setIpaddr(ip);
-                logininfor.setLoginLocation(address);
+//                logininfor.setLoginLocation(address);
                 logininfor.setBrowser(browser);
                 logininfor.setOs(os);
                 logininfor.setMsg(message);
